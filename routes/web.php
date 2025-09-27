@@ -2,6 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\ProfileController;
+use App\Http\Controllers\UserController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -12,9 +13,14 @@ use App\Http\Controllers\ProfileController;
 | be assigned to the "web" middleware group. Make something great!
 |
 */
-
 Route::get('/', function () {
     return view('welcome');
 });
 
+// Routing ke ProfileController
 Route::get('/profile', [ProfileController::class, 'profile']);
+
+Route::get('/user', [UserController::class, 'index']);
+Route::get('/user/create', [UserController::class, 'create']);
+Route::post('/user', [UserController::class, 'store'])->name('user.store');
+
