@@ -14,7 +14,7 @@ return new class extends Migration
         Schema::create('users', function (Blueprint $table) {
             $table->id();                                  // kolom id (primary key)
             $table->string('nama', 150);                   // kolom nama
-            $table->string('npm', 20)->unique();           // kolom npm, dibuat unique
+            $table->string('nim', 20)->unique();           // kolom npm, dibuat unique
             $table->foreignId('kelas_id')                  // kolom kelas_id
                   ->constrained();                   // jika kelas dihapus, user ikut terhapus
             $table->timestamps();                          // created_at & updated_at
