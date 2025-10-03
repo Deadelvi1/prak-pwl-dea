@@ -3,6 +3,8 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\UserController;
+use App\Http\Controllers\MataKuliahController; // Tambahan dari gambar
+
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -20,7 +22,12 @@ Route::get('/', function () {
 // Routing ke ProfileController
 Route::get('/profile', [ProfileController::class, 'profile']);
 
+// Routing untuk UserController
 Route::get('/user', [UserController::class, 'index'])->name('user.index');
 Route::get('/user/create', [UserController::class, 'create'])->name('user.create');
 Route::post('/user', [UserController::class, 'store'])->name('user.store');
 
+// Routing untuk MataKuliahController (Tambahan dari gambar)
+Route::get('/matakuliah', [MataKuliahController::class, 'index']);
+Route::get('/matakuliah/create', [MataKuliahController::class, 'create'])->name('matakuliah.create');
+Route::post('/matakuliah', [MataKuliahController::class, 'store'])->name('matakuliah.store');
