@@ -6,24 +6,20 @@ use Illuminate\Support\Facades\Schema;
 
 return new class extends Migration
 {
-    /**
-     * Run the migrations.
-     */
+  
     public function up(): void
     {
         Schema::create('users', function (Blueprint $table) {
-            $table->id();                                  // kolom id (primary key)
-            $table->string('nama', 150);                   // kolom nama
-            $table->string('nim', 20)->unique();           // kolom npm, dibuat unique
-            $table->foreignId('kelas_id')                  // kolom kelas_id
-                  ->constrained();                   // jika kelas dihapus, user ikut terhapus
-            $table->timestamps();                          // created_at & updated_at
+            $table->uuid('id')->primary();                 
+            $table->string('nama', 150);                
+            $table->string('nim', 20)->unique();          
+            $table->unsignedBigInteger('kelas_id');        
+            $table->timestamps();                          
+            
+            $table->foreign('kelas_id')->references('id')->on('kelas')->onDelete('cascade');
         });
     }
 
-    /**
-     * Reverse the migrations.
-     */
     public function down(): void
     {
         Schema::dropIfExists('user');
