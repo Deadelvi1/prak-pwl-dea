@@ -19,6 +19,7 @@ class Matakuliah extends Model
         'sks',
     ];
 
+    // Konfigurasi untuk menggunakan UUID sebagai Primary Key
     public $incrementing = false;
     protected $keyType = 'string';
 
@@ -27,6 +28,7 @@ class Matakuliah extends Model
         parent::boot();
 
         static::creating(function ($model) {
+            // Menggunakan Str::uuid() untuk menghasilkan ID
             if (empty($model->{$model->getKeyName()})) {
                 $model->{$model->getKeyName()} = (string) Str::uuid();
             }
