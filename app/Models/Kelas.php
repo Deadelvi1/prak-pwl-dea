@@ -13,7 +13,7 @@ class Kelas extends Model
 
     public function user()
     {
-        return $this->hasMany(User::class, 'kelas_id');
+        return $this->hasMany(UserModel::class, 'kelas_id');
     }
 
     public function getKelas(){
